@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-address-card',
@@ -6,13 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./address-card.component.css']
 })
 export class AddressCardComponent implements OnInit {
-  user: any;
+  
   @Input("name") userName: string;
+  @Input("user") user: User;
+  isCollapsed: boolean = true;
 
   constructor() { 
     // this.user = {
     //   name: Vicky,
-    //   title: 'Software Developer',
+    //   designation: 'Software Developer',
     //   address: '12345, Main St, Hyderabad, 100101',
     //   phone: [
     //     '123-123-1234',
@@ -23,16 +26,19 @@ export class AddressCardComponent implements OnInit {
   }
     
   ngOnInit() {
-    this.user = {
-      name: this.userName,
-      title: 'Software Developer',
-      address: '12345, Main St, Hyderabad, 100101',
-      phone: [
-        '123-123-1234',
-        '456-456-4567',
-        '789-789-7890'
-      ]
-    };
+    // this.user = {
+    //   name: this.userName,
+    //   designation: 'Software Developer',
+    //   address: '12345, Main St, Hyderabad, 100101',
+    //   phone: [
+    //     '123-123-1234',
+    //     '456-456-4567',
+    //     '789-789-7890'
+    //   ]
+    // };
   }
 
+  toggleIsCollapse() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }
